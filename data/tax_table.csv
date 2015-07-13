@@ -1,0 +1,6 @@
+income_range_start,income_range_finish,base_amount,rate
+0,18200,0,0
+18201,37000,0,0.19
+37001,80000,3572,0.325
+80001,180000,17547,0.37
+180001,infinity,54547,0.45

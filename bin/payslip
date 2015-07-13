@@ -1,0 +1,27 @@
+#!/usr/bin/env ruby
+# payslip
+
+# 20150706
+# 0.0.0
+
+require 'SimpleCSV.rbd/SimpleCSV'
+
+require_relative '../lib/employee'
+
+abs_to_this_files_directory = File.expand_path(File.basename(__FILE__))
+
+tax_table_file = File.expand_path(File.join(abs_to_this_files_directory, '..', 'data', 'tax_table.csv'))
+tax_table = TaxTable.load(tax_table_file)
+
+input_csv_file = File.expand_path(File.join(abs_to_this_files_directory, '..', 'spec', 'data', 'input.csv'))
+input_csv = SimpleCSV.new(input_csv_file, headers: true)
+
+output_csv_file = File.expand_path(File.join(abs_to_this_files_directory, '..', 'data', 'output.csv'))
+output_csv = SimpleCSV.new(output_csv_file, headers: true, mode: 'w', quote: :none)
+output_csv.columns = [:name, :pay_period, :gross_income, :income_tax, :net_income, :super]
+
+input_csv.each do |employee_pay_details|
+  output_csv.rows << Employee.new(employee_pay_details).to_h
+end
+
+output_csv.write
