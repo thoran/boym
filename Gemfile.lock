@@ -3,6 +3,7 @@ GEM
   specs:
     minitest (5.8.0)
     minitest-spec-context (0.0.3)
+    veto (1.0.1)
 
 PLATFORMS
   ruby
@@ -10,6 +11,7 @@ PLATFORMS
 DEPENDENCIES
   minitest
   minitest-spec-context
+  veto
 
 BUNDLED WITH
    1.10.6

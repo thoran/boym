@@ -12,6 +12,17 @@ class Employee
 
   end # class << self
 
+  include Veto.validator
+
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+  validates :annual_salary, presence: true
+  validates :annual_salary, format: /\d+/
+  validates :super_rate, presence: true
+  validates :super_rate, format: /\d{1,2}\%/
+  validates :payment_start_date, presence: true
+  validates :payment_start_date, format: /\d\d \S+ – \d\d \S+/
+
   attr_accessor :first_name, :last_name, :annual_salary, :super_rate, :pay_period
 
   def initialize(employee_data)
