@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+gem 'veto'
+
 group :test do
-  gem 'rspec', require: false
+  gem 'minitest', require: false
+  gem 'minitest-spec-context', require: false
 end

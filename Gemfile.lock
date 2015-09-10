@@ -1,26 +1,15 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    diff-lcs (1.2.5)
-    rspec (3.3.0)
-      rspec-core (~> 3.3.0)
-      rspec-expectations (~> 3.3.0)
-      rspec-mocks (~> 3.3.0)
-    rspec-core (3.3.1)
-      rspec-support (~> 3.3.0)
-    rspec-expectations (3.3.0)
-      diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (~> 3.3.0)
-    rspec-mocks (3.3.1)
-      diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (~> 3.3.0)
-    rspec-support (3.3.0)
+    minitest (5.8.0)
+    minitest-spec-context (0.0.3)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  rspec
+  minitest
+  minitest-spec-context
 
 BUNDLED WITH
-   1.10.2
+   1.10.6
