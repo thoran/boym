@@ -1,25 +1,42 @@
 #!/usr/bin/env ruby
 # payslip
 
-# 20150710, 11
-# 0.0.1
+# 20150909, 10
+# 0.1.0
 
 require 'SimpleCSV.rbd/SimpleCSV'
 
 require_relative '../lib/employee'
+require_relative '../lib/employee_file'
+require_relative '../lib/employee_tax'
+require_relative '../lib/payslip'
+require_relative '../lib/tax_table'
 
-tax_table_file = File.expand_path(File.join('..', '..', 'data', 'tax_table.csv'), __FILE__)
-tax_table = TaxTable.load(tax_table_file)
+TAX_TABLE_FILE = File.expand_path(File.join('..', '..', 'data', 'tax_table.csv'), __FILE__)
+EMPLOYEE_FILE = File.expand_path(File.join('..', '..', 'data', 'input.csv'), __FILE__)
+PAYSLIP_FILE = File.expand_path(File.join('..', '..', 'data', 'output.csv'), __FILE__)
 
-input_csv_file = File.expand_path(File.join('..', '..', 'spec', 'data', 'input.csv'), __FILE__)
-input_csv = SimpleCSV.open(input_csv_file, headers: true)
-
-output_csv_file = File.expand_path(File.join('..', '..', 'data', 'output.csv'), __FILE__)
-output_csv = CSVFile.new(output_csv_file, headers: true, mode: 'w', quote: :none)
-output_csv.columns = [:name, :pay_period, :gross_income, :income_tax, :net_income, :super]
-
-input_csv.each do |employee_pay_details|
-  output_csv.rows << Employee.new(employee_pay_details).to_h
+def load_tax_table
+  @tax_table ||= TaxTable.load(TAX_TABLE_FILE)
 end
 
-output_csv.write
+def employees
+  employees = Employee.load(EMPLOYEE_FILE)
+  raise employees if employees.any?{|e| e.errors.present?}
+end
+
+def calculate_employees_taxes(tax_table)
+  employees.collect{|employee| EmployeeTax.new(employee, tax_table)}
+end
+
+def generate_payslip(employees_taxes)
+  Payslip.new(employees_taxes).dump(PAYSLIP_FILE)
+end
+
+def main
+  tax_table = load_tax_table
+  employees_taxes = calculate_employees_taxes(tax_table)
+  generate_payslip(employees_taxes)
+end
+
+main
