@@ -1,11 +1,12 @@
 #!/usr/bin/env ruby
 # payslip
 
-# 20150909, 10
+# 20150909, 10, 11
 # 0.1.0
 
-require 'SimpleCSV.rbd/SimpleCSV'
+require 'veto'
 
+require_relative '../lib/SimpleCSV.rbd/SimpleCSV'
 require_relative '../lib/employee'
 require_relative '../lib/employee_file'
 require_relative '../lib/employee_tax'
