@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'veto'
+gem 'activerecord'
 
 group :test do
   gem 'minitest', require: false
