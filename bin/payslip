@@ -25,8 +25,8 @@ def employees
   raise employees if employees.any?{|e| e.errors.present?}
 end
 
-def calculate_employees_taxes(tax_table)
-  employees.collect{|employee| EmployeeTax.new(employee, tax_table)}
+def employees_taxes
+  employees.collect{|employee| EmployeeTax.new(employee)}
 end
 
 def generate_payslip(employees_taxes)
@@ -35,7 +35,6 @@ end
 
 def main
   tax_table = load_tax_table
-  employees_taxes = calculate_employees_taxes(tax_table)
   generate_payslip(employees_taxes)
 end
 

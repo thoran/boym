@@ -1,10 +1,9 @@
 class EmployeeTax
 
-  attr_reader :employee, :tax_table
+  attr_reader :employee
 
-  def initialize(employee, tax_table)
+  def initialize(employee)
     @employee = employee
-    @tax_table = tax_table
   end
 
   def tax_bracket
