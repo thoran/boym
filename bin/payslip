@@ -4,7 +4,7 @@
 # 20150909, 10, 11
 # 0.1.0
 
-require 'veto'
+require 'active_record'
 
 require_relative '../lib/SimpleCSV.rbd/SimpleCSV'
 require_relative '../lib/employee'

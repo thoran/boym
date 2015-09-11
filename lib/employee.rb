@@ -12,7 +12,7 @@ class Employee
 
   end # class << self
 
-  include Veto.validator
+  include ActiveModel::Validations
 
   validates :first_name, presence: true
   validates :last_name, presence: true
