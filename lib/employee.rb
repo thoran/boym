@@ -2,8 +2,8 @@ class Employee
 
   class << self
 
-    def all
-      load.collect{|employee_data| new(employee_data)}
+    def all(filename)
+      load(filename).collect{|employee_data| new(employee_data)}
     end
 
     def load(filename)

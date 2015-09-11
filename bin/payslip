@@ -21,8 +21,9 @@ def load_tax_table
 end
 
 def employees
-  employees = Employee.load(EMPLOYEE_FILE)
+  employees = Employee.all(File.new(EMPLOYEE_FILE))
   raise employees if employees.any?{|e| e.errors.present?}
+  employees
 end
 
 def employees_taxes
