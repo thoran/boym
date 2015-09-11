@@ -7,12 +7,12 @@ class EmployeeTax
   end
 
   def tax_bracket
-    tax_table.applicable_tax_bracket(employee.yearly_income)
+    TaxTable.applicable_tax_bracket(employee.annual_salary)
   end
 
   def monthly_tax_payable
-    yearly_income = employee.yearly_income.to_i
-    ((tax_bracket.base_amount + ((employee.yearly_income - tax_bracket.income_range_start) * tax_bracket.rate))/12.0).round
+    yearly_income = employee.annual_salary.to_i
+    ((tax_bracket.base_amount + ((yearly_income - tax_bracket.income_range_start) * tax_bracket.rate))/12.0).round
   end
   alias_method :income_tax, :monthly_tax_payable
 

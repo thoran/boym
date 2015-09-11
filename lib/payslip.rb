@@ -3,12 +3,11 @@ class Payslip
   attr_accessor :employees_taxes, :payslip_filename
 
   def initialize(employees_taxes)
-    @employees_taxes = employees_tax_data
-    set_columns
+    @employees_taxes = employees_taxes
   end
 
   def <<(employee_tax)
-    payslip_file.rows << employee_tax
+    payslip_file.rows << employee_tax.to_h
   end
 
   def dump(payslip_filename)
