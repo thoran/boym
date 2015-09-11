@@ -8,7 +8,6 @@ require 'active_record'
 
 require_relative '../lib/SimpleCSV.rbd/SimpleCSV'
 require_relative '../lib/employee'
-require_relative '../lib/employee_file'
 require_relative '../lib/employee_tax'
 require_relative '../lib/payslip'
 require_relative '../lib/tax_table'
