@@ -34,7 +34,7 @@ module Boym
       def load(tax_table_file)
         tax_table_data = SimpleCSV.open(tax_table_file, headers: true)
         tax_table_data.each do |tax_bracket_data|
-          tax_brackets << TaxBracket.new(tax_bracket_data)
+          tax_brackets << Boym::TaxBracket.new(tax_bracket_data)
         end
         tax_brackets
       end

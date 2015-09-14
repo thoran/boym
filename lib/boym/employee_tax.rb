@@ -8,7 +8,7 @@ module Boym
     end
 
     def tax_bracket
-      TaxTable.applicable_tax_bracket(employee.annual_salary)
+      Boym::TaxTable.applicable_tax_bracket(employee.annual_salary)
     end
 
     def monthly_tax_payable
