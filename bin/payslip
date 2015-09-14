@@ -13,8 +13,8 @@ require_relative '../lib/boym/payslip'
 require_relative '../lib/boym/tax_table'
 
 TAX_TABLE_FILE = File.expand_path(File.join('..', '..', 'data', 'tax_table.csv'), __FILE__)
-EMPLOYEE_FILE = File.expand_path(File.join('..', '..', 'data', 'input.csv'), __FILE__)
-PAYSLIP_FILE = File.expand_path(File.join('..', '..', 'data', 'output.csv'), __FILE__)
+EMPLOYEE_FILE = File.expand_path(File.join('..', '..', 'data', 'employee.csv'), __FILE__)
+PAYSLIP_FILE = File.expand_path(File.join('..', '..', 'data', 'payslip.csv'), __FILE__)
 
 def load_tax_table
   @tax_table ||= Boym::TaxTable.load(TAX_TABLE_FILE)
