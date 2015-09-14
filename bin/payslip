@@ -16,9 +16,9 @@ TAX_TABLE_FILE = File.expand_path(File.join('..', '..', 'data', 'tax_table.csv')
 EMPLOYEE_FILE = File.expand_path(File.join('..', '..', 'data', 'employee.csv'), __FILE__)
 PAYSLIP_FILE = File.expand_path(File.join('..', '..', 'data', 'payslip.csv'), __FILE__)
 
-def load_tax_table
-  @tax_table ||= Boym::TaxTable.load(TAX_TABLE_FILE)
-end
+# def load_tax_table
+#   @tax_table ||= Boym::TaxTable.load(TAX_TABLE_FILE)
+# end
 
 def employees
   employees = Boym::Employee.all(File.new(EMPLOYEE_FILE))
@@ -35,7 +35,11 @@ def generate_payslip(employees_taxes)
 end
 
 def main
-  tax_table = load_tax_table
+  # It's preferred if the tax_table is loaded here and passed, but to get it working
+  # faster with the raft of other changes I have made I just dropped that into EmployeeTax
+  # directly for now...
+  # tax_table = load_tax_table
+  # employees_taxes = do_something_with_employee_taxes(tax_table)
   generate_payslip(employees_taxes)
 end
 
